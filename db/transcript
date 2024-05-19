@@ -1,0 +1,94 @@
+vsim work.stream_upsize_tb
+# vsim work.stream_upsize_tb 
+# Start time: 23:47:45 on May 19,2024
+# Loading sv_std.std
+# Loading work.stream_upsize_tb
+# Loading work.stream_upsize
+add wave -position end  sim:/stream_upsize_tb/num_pkts
+add wave -position end  sim:/stream_upsize_tb/clk
+add wave -position end  sim:/stream_upsize_tb/rst_n
+add wave -position end  sim:/stream_upsize_tb/s_data_i
+add wave -position end  sim:/stream_upsize_tb/s_last_i
+add wave -position end  sim:/stream_upsize_tb/s_valid_i
+add wave -position end  sim:/stream_upsize_tb/s_ready_o
+add wave -position end  sim:/stream_upsize_tb/m_data_o
+add wave -position end  sim:/stream_upsize_tb/m_keep_o
+add wave -position end  sim:/stream_upsize_tb/m_last_o
+add wave -position end  sim:/stream_upsize_tb/m_valid_o
+add wave -position end  sim:/stream_upsize_tb/m_ready_i
+# Load canceled
+# Load canceled
+run -all
+# ** Note: $finish    : C:/test/test_impulse/test_interconnect/vivado/stream_upsize/stream_upsize.srcs/sim_1/new/stream_upsize_tb.sv(57)
+#    Time: 2671 ns  Iteration: 0  Instance: /stream_upsize_tb
+# 1
+# Break in Module stream_upsize_tb at C:/test/test_impulse/test_interconnect/vivado/stream_upsize/stream_upsize.srcs/sim_1/new/stream_upsize_tb.sv line 57
+# Compile of stream_upsize.sv failed with 1 errors.
+# Compile of stream_upsize_tb.sv was successful.
+# 2 compiles, 1 failed with 1 error.
+# Compile of stream_upsize.sv failed with 1 errors.
+# Compile of stream_upsize.sv failed with 1 errors.
+# Compile of stream_upsize.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.stream_upsize_tb
+# Loading work.stream_upsize
+run -all
+# GetModuleFileName: Не найден указанный модуль.
+# 
+# 
+# ** Note: $finish    : C:/test/test_impulse/test_interconnect/vivado/stream_upsize/stream_upsize.srcs/sim_1/new/stream_upsize_tb.sv(57)
+#    Time: 2790 ns  Iteration: 0  Instance: /stream_upsize_tb
+# 1
+# Break in Module stream_upsize_tb at C:/test/test_impulse/test_interconnect/vivado/stream_upsize/stream_upsize.srcs/sim_1/new/stream_upsize_tb.sv line 57
+# Compile of stream_upsize.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.stream_upsize
+run -all
+# GetModuleFileName: Не найден указанный модуль.
+# 
+# 
+# ** Note: $finish    : C:/test/test_impulse/test_interconnect/vivado/stream_upsize/stream_upsize.srcs/sim_1/new/stream_upsize_tb.sv(57)
+#    Time: 2790 ns  Iteration: 0  Instance: /stream_upsize_tb
+# 1
+# Break in Module stream_upsize_tb at C:/test/test_impulse/test_interconnect/vivado/stream_upsize/stream_upsize.srcs/sim_1/new/stream_upsize_tb.sv line 57
+# Compile of stream_upsize_tb.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.stream_upsize_tb
+# Load canceled
+run -all
+# GetModuleFileName: Не найден указанный модуль.
+# 
+# 
+# ** Note: $finish    : C:/test/test_impulse/test_interconnect/vivado/stream_upsize/stream_upsize.srcs/sim_1/new/stream_upsize_tb.sv(57)
+#    Time: 2170 ns  Iteration: 0  Instance: /stream_upsize_tb
+# 1
+# Break in Module stream_upsize_tb at C:/test/test_impulse/test_interconnect/vivado/stream_upsize/stream_upsize.srcs/sim_1/new/stream_upsize_tb.sv line 57
+# Compile of stream_upsize_tb.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.stream_upsize_tb
+run -all
+# GetModuleFileName: Не найден указанный модуль.
+# 
+# 
+# ** Note: $finish    : C:/test/test_impulse/test_interconnect/vivado/stream_upsize/stream_upsize.srcs/sim_1/new/stream_upsize_tb.sv(57)
+#    Time: 2270 ns  Iteration: 0  Instance: /stream_upsize_tb
+# 1
+# Break in Module stream_upsize_tb at C:/test/test_impulse/test_interconnect/vivado/stream_upsize/stream_upsize.srcs/sim_1/new/stream_upsize_tb.sv line 57
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Compile of stream_upsize.sv was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.stream_upsize
+run -all
+# GetModuleFileName: Не найден указанный модуль.
+# 
+# 
+# ** Note: $finish    : C:/test/test_impulse/test_interconnect/vivado/stream_upsize/stream_upsize.srcs/sim_1/new/stream_upsize_tb.sv(57)
+#    Time: 2270 ns  Iteration: 0  Instance: /stream_upsize_tb
+# 1
+# Break in Module stream_upsize_tb at C:/test/test_impulse/test_interconnect/vivado/stream_upsize/stream_upsize.srcs/sim_1/new/stream_upsize_tb.sv line 57

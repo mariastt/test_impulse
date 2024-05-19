@@ -1,0 +1,97 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "s_ready_o",
+					"strict" : false
+				},
+				{
+					"name" : "m_data_o[0][0]",
+					"strict" : false
+				},
+				{
+					"name" : "m_data_o[0][1]",
+					"strict" : false
+				},
+				{
+					"name" : "m_data_o[0][2]",
+					"strict" : false
+				},
+				{
+					"name" : "m_data_o[0][3]",
+					"strict" : false
+				},
+				{
+					"name" : "m_data_o[1][0]",
+					"strict" : false
+				},
+				{
+					"name" : "m_data_o[1][1]",
+					"strict" : false
+				},
+				{
+					"name" : "m_data_o[1][2]",
+					"strict" : false
+				},
+				{
+					"name" : "m_data_o[1][3]",
+					"strict" : false
+				},
+				{
+					"name" : "m_keep_o[0]",
+					"strict" : false
+				},
+				{
+					"name" : "m_keep_o[1]",
+					"strict" : false
+				},
+				{
+					"name" : "m_last_o",
+					"strict" : false
+				},
+				{
+					"name" : "m_valid_o",
+					"strict" : false
+				},
+				{
+					"name" : "s_last_i",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "rst_n",
+					"strict" : false
+				},
+				{
+					"name" : "m_ready_i",
+					"strict" : false
+				},
+				{
+					"name" : "s_data_i[0]",
+					"strict" : false
+				},
+				{
+					"name" : "s_valid_i",
+					"strict" : false
+				},
+				{
+					"name" : "s_data_i[1]",
+					"strict" : false
+				},
+				{
+					"name" : "s_data_i[2]",
+					"strict" : false
+				},
+				{
+					"name" : "s_data_i[3]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

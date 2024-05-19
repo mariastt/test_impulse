@@ -1,0 +1,113 @@
+`timescale 1ns / 1ps
+
+module stream_upsize #(
+    parameter T_DATA_WIDTH = 4,
+    parameter T_DATA_RATIO = 2,
+    parameter fifo_depth = 32
+)(
+    input  logic                    clk,
+    input  logic                    rst_n,
+    input  logic [T_DATA_WIDTH-1:0] s_data_i,
+    input  logic                    s_last_i,
+    input  logic                    s_valid_i,
+    output logic                    s_ready_o,
+    output logic [T_DATA_WIDTH-1:0] m_data_o [T_DATA_RATIO-1:0],
+    output logic [T_DATA_RATIO-1:0] m_keep_o,
+    output logic                    m_last_o,
+    output logic                    m_valid_o,
+    input logic                     m_ready_i
+  );
+    
+// FIFO  
+    logic [T_DATA_WIDTH-1:0] buffer [fifo_depth-1:0];      // fifo for data
+    logic                    buffer_last [fifo_depth-1:0]; // fifo for last
+
+    logic [$clog2(fifo_depth)-1:0] head;       // write ptr
+    logic [$clog2(fifo_depth)-1:0] tail;       // read ptr
+    logic                          buff_full;  // fifo is full
+    logic                          buff_empty; // fifo is empty
+    logic                          wr_en;      // enable write in fifo
+    logic                          rd_en;      // enable read from fifo
+    logic                          rd_cntr;    // number of data in output packet
+    
+    always_comb begin
+        if ((head - tail) >= 0) begin
+            buff_full = ((head - tail) != (fifo_depth - 1)) ? 0 : 1;
+        end else begin
+            buff_full = ((head - tail + fifo_depth) != (fifo_depth - 1)) ? 0 : 1;
+        end
+    end
+    assign rd_en = ~buff_empty;
+    assign wr_en = ~(buff_full || ~s_ready_o); 
+    assign buff_empty = ~(head != tail);
+
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (~rst_n) begin
+            s_ready_o <= 1;
+        end
+        else begin
+            if (s_last_i) 
+                s_ready_o <= 0; 
+            if (~s_ready_o)
+                s_ready_o <= 1;
+        end 
+    end
+ 
+// write data in FIFO
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (~rst_n) begin
+            head <= 0;
+            for (int i=0; i<fifo_depth; i++) begin
+                buffer[i] <= '0;
+                buffer_last[i] <= 0;
+            end
+        end
+        else begin
+            if (s_valid_i && wr_en) begin
+                    buffer[head] <= s_data_i;
+                    buffer_last[head] <= s_last_i;
+                    head <= (head == fifo_depth - 1) ? 0 : head + 1;
+            end 
+        end 
+    end
+             
+   
+//read data from FIFO
+    logic last_pkt;
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (~rst_n) begin
+             m_last_o <= 0;
+             m_valid_o <= 0;
+             rd_cntr <= 0;
+             tail <= 0;
+             m_keep_o <= '0;
+             last_pkt <= 0;
+             for (int i=0; i<T_DATA_RATIO; i++)
+                 m_data_o[i] <= '0;
+        end else begin
+		      m_valid_o <= 0;
+				m_last_o <= 0;
+            if (rd_en && m_ready_i) begin
+                    if (~rd_cntr) begin
+                            m_data_o[0] <= buffer[tail];
+                            last_pkt <= buffer_last[tail];
+                            m_keep_o <= 2'b01; 
+                            tail <= (tail == fifo_depth - 1) ? 0 : tail + 1;
+                    end else begin
+                            if (last_pkt) begin
+                                    m_data_o[1] <= '0;
+                                    m_last_o <= last_pkt;
+                                    m_valid_o <= 1;
+                            end else begin
+                                    m_data_o[1] <= buffer[tail];
+                                    m_last_o <= buffer_last[tail];
+                                    m_keep_o <= 2'b11; 
+                                    m_valid_o <= 1;
+                                    tail <= (tail == fifo_depth - 1) ? 0 : tail + 1;
+                            end
+                    end
+                    rd_cntr <= ~rd_cntr;
+            end            
+        end
+    end
+endmodule 
